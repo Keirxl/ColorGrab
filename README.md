@@ -1,8 +1,11 @@
-# ColorGrab
+# Pawn
 A Blinks Game
 
 Players: 2+  
 Blinks: 6+ preferred  
+
+You are trying to pawn off your blinks to the public, but if someone else has already pawned off the same color blink you'll  
+end up having too much in your inventory.  
 
 Setup:  
 -Split the blinks up equally between players  
