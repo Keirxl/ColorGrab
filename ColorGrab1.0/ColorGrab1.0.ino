@@ -8,7 +8,7 @@
 enum signalStates {INERT, RESET, RESOLVE};
 byte signalState = INERT;
 byte color=0;
-Color colors[6]={RED,CYAN,MAGENTA,GREEN,BLUE,YELLOW};
+Color colors[6]={BLUE,CYAN,MAGENTA,GREEN,RED,YELLOW};
 byte randomColor;
 byte displayFace=0;
 byte deadBrightness;
