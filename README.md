@@ -17,4 +17,4 @@ Play:
 -You may keep taking a single Blink and double clicking to randomize the color until you get a color that is already in the pile in the middle of the table. 
 -In this case you pick up the blink from the pile and add it to your stack.
 -At any point you may choose to end your turn if you have randomized a blink color at least once on your turn.
--If you randomize a Blink and it turns yellow and spins, then it is out of the game, and may be placed aside for the duration.
+-If you randomize a Blink and it turns yellow and spins, then it is out of the game, and may be placed aside for the duration. 
