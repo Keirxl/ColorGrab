@@ -7,6 +7,10 @@ Blinks: 6+ preferred
 You are trying to pawn off your blinks to the public, but if someone else has already pawned off the same color blink you'll  
 end up having too much in your inventory.  
 
+Controls:  
+-Double click a lone blink to randomize  
+-At any point you can triple click to set the game back to the start  
+
 Setup:  
 -Split the blinks up equally between players  
 -if you have enough, double click and set one or two blinks in the middle of the table for the starting pile.  
