@@ -150,7 +150,7 @@ void displayColor(){
       deadBrightness=240;
       isDecrease=true;
     }else if(deadBrightness<150){
-      deadBrightness=150;
+      deadBrightness=140;
       isDecrease=false;
     }
     deadTimer.set(LAP_DURATION);
