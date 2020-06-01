@@ -1,4 +1,6 @@
 
+#define teal makeColorHSB(100,255,255)
+
 #define CHOOSE_COLOR_DURATION 500
 #define LAP_DURATION 100
 #define DEAD_DURATION 300
@@ -7,7 +9,7 @@
 enum signalStates {INERT, RESET, RESOLVE};
 byte signalState = INERT;
 byte color=0;
-Color colors[6]={BLUE,CYAN,MAGENTA,GREEN,RED,YELLOW};
+Color colors[6]={BLUE,teal,MAGENTA,GREEN,RED,YELLOW};
 byte randomColor;
 byte displayFace=0;
 byte deadBrightness;
@@ -65,7 +67,7 @@ void inertLoop() {
   if(buttonDoubleClicked()){
     if(isAlone()){
       chooseColorTimer.set(CHOOSE_COLOR_DURATION);
-      randomColor=millis()%6;
+      randomColor=(random(5)+millis())%6;
       color=randomColor;
       if(color==5){
         isDead=true;
