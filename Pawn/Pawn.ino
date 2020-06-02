@@ -9,10 +9,11 @@
 enum signalStates {INERT, RESET, RESOLVE};
 byte signalState = INERT;
 byte color=0;
-Color colors[6]={BLUE,teal,MAGENTA,GREEN,RED,YELLOW};
+Color colors[6]={BLUE,teal,YELLOW,MAGENTA,GREEN,RED};
 byte randomColor;
 byte displayFace=0;
 byte deadBrightness;
+byte BLINKS=6;
 Timer chooseColorTimer;
 Timer spinTimer;
 Timer deadTimer;
@@ -59,17 +60,21 @@ void inertLoop() {
   //set myself to RESET
   if (buttonMultiClicked()) {
     byte clicks=buttonClickCount();
-    if(clicks==3){
-      signalState = RESET;
+    if(clicks>=3){
+      color=clicks+6; //everything shifted so 9=3 options
+      byte sendData= (signalState << 4) + (color);
+      setValueSentOnAllFaces(sendData);
+      BLINKS=clicks;
+      signalState=RESET;
     }
   }
 
   if(buttonDoubleClicked()){
     if(isAlone()){
       chooseColorTimer.set(CHOOSE_COLOR_DURATION);
-      randomColor=(random(5)+millis())%6;
+      randomColor=(random(BLINKS-1)+millis())%BLINKS; //a random number determined by how many blinks you have
       color=randomColor;
-      if(color==5){
+      if(color==2){
         isDead=true;
       }
     }
@@ -92,8 +97,17 @@ void inertLoop() {
 void resetLoop() {
   signalState = RESOLVE;//I default to this at the start of the loop. Only if I see a problem does this not happen
 
-  color=0;
+  
+ 
   isDead=false;
+
+  FOREACH_FACE(f){
+    if(!isValueReceivedOnFaceExpired(f)){
+      if(getColor(getLastValueReceivedOnFace(f))>5){
+        BLINKS=getColor(getLastValueReceivedOnFace(f))-6;
+      }
+    }
+  }
   
 
   //look for neighbors who have not heard the RESET news
@@ -169,5 +183,5 @@ byte getSignalState(byte data) {
 }
 
 byte getColor(byte data) {
-  return (data & 7);
+  return (data & 15);
 }
