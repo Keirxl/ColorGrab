@@ -123,6 +123,9 @@ void resetLoop() {
 void resolveLoop() {
   signalState = INERT;//I default to this at the start of the loop. Only if I see a problem does this not happen
 
+
+  color=0;
+  
   //look for neighbors who have not moved to RESOLVE
   FOREACH_FACE(f) {
     if (!isValueReceivedOnFaceExpired(f)) {//a neighbor!
