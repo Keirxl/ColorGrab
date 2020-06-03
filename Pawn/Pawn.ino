@@ -104,6 +104,8 @@ void resetLoop() {
   FOREACH_FACE(f){
     if(!isValueReceivedOnFaceExpired(f)){
       if(getColor(getLastValueReceivedOnFace(f))>5){
+        byte sendData= (signalState << 4) + (color);
+        setValueSentOnAllFaces(sendData);
         BLINKS=getColor(getLastValueReceivedOnFace(f))-6;
       }
     }
